@@ -6,7 +6,7 @@
  * @author (Kevin Hayes)
  * @version (10-19-2016)
  */
-import java.awt.*;
+import java.awt.*;//accesses color class.
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
 public class TestPicture17
@@ -19,22 +19,24 @@ public class TestPicture17
   public static void main(String[] args)
   {
       //opens picture using a dialog box
-      /**/
+      /*
      String fileName = FileChooser.pickAFile();
      Picture pictObj = new Picture(fileName);
      pictObj.explore();
-
+     */
      //opens a pictue using a path
      //Picture apic = new Picture("C:\\Users\\khayes\\Favorites\\Documents\APCS- Java\chap03\Curriclum 2013\Picture Color labs\images\\beach.jpg");
      
-     //relative path
+     //Know it, Love it, Live it!!!!!
+     //relative path        directory/folder/file
      Picture apic = new Picture("images\\beach.jpg");
+     Picture heehee = new Picture("images/wall.jpg");
+     Picture moto = new Picture("images/blueMotorcycle.jpg");
      Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris2 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris3 = new Picture("images/2000 ferris wheel2.jpg");
 
-     //apic.explore();
-     ferris1.explore();
+     //apic.explore(); (displays picture!!!)
+     apic.explore();
+     moto.explore();
      
      //makes an array of pixels
      Pixel[] pixels;
@@ -48,11 +50,20 @@ public class TestPicture17
     /**/
         //access each index
     System.out.println(pixels[17]);
-    //access each pixel
+    //access each pixel pixel pic.method.getPixel
     Pixel spot = ferris1.getPixel(100,100);
-    
+    Pixel spot50 = ferris1.getPixel(50,50);
+    Color ltsteel = new Color(176,196,222);
     System.out.println(pixels[17].getColor());
     System.out.println(spot);
+    
+    Pixel spot17 = pixels[17];
+    spot17.setRed(200);
+    spot17.setBlue(150);
+    spot17.setGreen(175);
+    spot.setColor(Color.yellow);
+    spot50.setColor(ltsteel);
+    ferris1.explore();
 /*
     pixels[17].setColor(Color.blue);
     spot.setColor(new Color(252,252,252));
@@ -114,7 +125,7 @@ final double  FACTOR = .5;
 
   /**/ 
     //write/save a picture as a file
-    ferris1.write("images/ferris11.jpg");
+    moto.write("images/ferris11.jpg");
 
     /**/
   }//main
