@@ -108,6 +108,7 @@ for (Pixel spot1 : pixels)
 ferris1.explore();
 
 int green;
+*/
 int count = 0;
 for (Pixel spot1: pixels)
 {
@@ -117,14 +118,14 @@ for (Pixel spot1: pixels)
     count++;
 }
 ferris1.explore();
-*/
+
 
 
     ferris1.explore();
 
   /**/ 
     //write/save a picture as a file
-    moto.write("images/ferris11.jpg");
+    ferris1.write("images/ferris11.jpg");
 
     /**/
   }//main
