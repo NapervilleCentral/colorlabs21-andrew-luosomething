@@ -22,30 +22,30 @@ public class ColorLab
         Pixel[] pixels3 = pic3.getPixels();
         Pixel[] pixels4 = pic4.getPixels();
         pic1.explore();
-        /**
-        adjustRed
+        
+        //adjustRed
         for (Pixel spot : pixels1)
         {
             red = spot.getRed();
             red = (int) (red * 0.5);
             spot.setRed(red);
         }
-        adjustGreen
-        for (Pixel spot : pixels1)
+        //adjustGreen
+        for (Pixel spot : pixels2)
         {
             blue = spot.getBlue();
             blue = (int) (blue * 0.4);
             spot.setBlue(blue);
         }
-        adjustBlue
-        for (Pixel spot : pixels1)
+        //adjustBlue
+        for (Pixel spot : pixels3)
         {
             green = spot.getGreen();
             green = (int) (green * 0.75);
             spot.setGreen(green);
         }
-        negate
-        for (Pixel spot : pixels1)
+        //negate
+        for (Pixel spot : pixels4)
         {
             red = spot.getRed();
             blue = spot.getBlue();
@@ -57,8 +57,8 @@ public class ColorLab
             spot.setBlue(blue);
             spot.setGreen(green);
         }
-        grayscale
-        for (Pixel spot : pixels1)
+        //grayscale
+        for (Pixel spot : pixels2)
         {
         red = spot.getRed();
         blue = spot.getBlue();
@@ -70,7 +70,7 @@ public class ColorLab
         spot.setBlue(blue);
         spot.setGreen(green);
         }
-        lighten
+        //lighten
         for (Pixel spot : pixels1)
         {
             red = spot.getRed();
@@ -89,8 +89,8 @@ public class ColorLab
             spot.setBlue(blue);
             spot.setGreen(green);
         }
-        darken
-        for (Pixel spot : pixels1)
+        //darken
+        for (Pixel spot : pixels2)
         {
             red = spot.getRed();
             blue = spot.getBlue();
@@ -108,8 +108,8 @@ public class ColorLab
             spot.setBlue(blue);
             spot.setGreen(green);
         }
-        changeColors
-        for (Pixel spot : pixels1)
+        //changeColors
+        for (Pixel spot : pixels3)
         {
             red = spot.getRed();
             blue = spot.getBlue();
@@ -133,15 +133,27 @@ public class ColorLab
             spot.setBlue(blue);
             spot.setGreen(green);
         }
-        */
-        for (Pixel spot : pixels2)
+        //blueify
+        for (Pixel spot : pixels3)
         {
-            red = spot.getRed();//230,210.160
+            red = spot.getRed(); //230,210.160
             blue = spot.getBlue();
             green = spot.getGreen();
             if (red > 190 && blue > 170 && blue < 250 && green > 120 && green < 200)
-            
+            spot.setColor(Color.blue);
         }
+        //colorify
+        for (Pixel spot : pixels1)
+        {
+            Color something = new Color(250,0,100);
+            red = spot.getRed();
+            blue = spot.getBlue();
+            green = spot.getGreen();
+            if (red > 100 && red < 140 && 
+            blue > 40 && blue < 80 && green > 120 && green < 160)
+            spot.setColor(something);
+        }
+        
         pic1.explore();
         pic2.explore();
         pic3.explore();
