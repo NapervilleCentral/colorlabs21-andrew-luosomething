@@ -22,9 +22,11 @@ public class SheparFaireyLab
          //relative path
          Picture pic1 = new Picture("images\\selfee.jpg");
          Picture pic2 = new Picture("images\\selfee.jpg");
+         Picture pic3 = new Picture("images\\selfee.jpg");
          pic1.explore();
          Pixel[] pixels1 = pic1.getPixels();
          Pixel[] pixels2 = pic2.getPixels();
+         Pixel[] pixels3 = pic3.getPixels();
          //custom color palette
          Color dkblue = new Color(28,32,77);
          Color redish = new Color(220,0,0);
@@ -81,6 +83,35 @@ public class SheparFaireyLab
              ixl.setColor(offwt);
          }
          
+         pic1.explore();
          pic2.explore();
+         pic1.write("images\\SFmethod1.jpg");
+         pic2.write("images\\SFmethod2.jpg");
+         
+         //method 3: my own palette
+         Color dkpurple = new Color(36,4,71);
+         Color deepblue = new Color(12,78,166);
+         Color ltgreen = new Color(115,237,102);
+         Color ltorange = new Color(235,209,164);
+         Color ltyellow = new Color(238,240,189);
+         for (Pixel ixl : pixels3)
+         {
+             red = ixl.getRed();
+             green = ixl.getGreen();
+             blue = ixl.getBlue();
+             avg = (red + green + blue)/3;
+             if (avg < 70)
+             ixl.setColor(dkpurple);
+             else if (avg < 128)
+             ixl.setColor(deepblue);
+             else if (avg < 150)
+             ixl.setColor(ltgreen);
+             else if (avg < 208)
+             ixl.setColor(ltorange);
+             else
+             ixl.setColor(ltyellow);
+         }
+         pic3.explore();
+         pic3.write("images\\SFtry1.jpg");
     }//main       
 }//class

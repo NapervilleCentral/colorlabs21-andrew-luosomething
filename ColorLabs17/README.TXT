@@ -11,4 +11,9 @@ HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
 
-Person who offered feedback:
+Personal thoughts on try 1: Buckets look good, second lightest bucket manages to get onto
+my face, bringing some depth, while clouds are toned down. I'm not quite sure about
+the green face, may select a different color for that. I really like the tan colors.
+Also realized that this looks like a satellite map of some random place...
+Person who offered feedback: Emma
+Looks rather good.
