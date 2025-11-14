@@ -91,7 +91,7 @@ public class SheparFaireyLab
          //method 3: my own palette
          Color dkpurple = new Color(36,4,71);
          Color deepblue = new Color(12,78,166);
-         Color ltgreen = new Color(115,237,102);
+         Color darkcyan = new Color(16,158,144);
          Color ltorange = new Color(235,209,164);
          Color ltyellow = new Color(238,240,189);
          for (Pixel ixl : pixels3)
@@ -100,18 +100,18 @@ public class SheparFaireyLab
              green = ixl.getGreen();
              blue = ixl.getBlue();
              avg = (red + green + blue)/3;
-             if (avg < 70)
+             if (avg < 80)
              ixl.setColor(dkpurple);
-             else if (avg < 128)
+             else if (avg < 112)
              ixl.setColor(deepblue);
-             else if (avg < 150)
-             ixl.setColor(ltgreen);
-             else if (avg < 208)
+             else if (avg < 140)
+             ixl.setColor(darkcyan);
+             else if (avg < 192)
              ixl.setColor(ltorange);
              else
              ixl.setColor(ltyellow);
          }
          pic3.explore();
-         pic3.write("images\\SFtry1.jpg");
+         pic3.write("images\\SFmyFinal.jpg");
     }//main       
 }//class
