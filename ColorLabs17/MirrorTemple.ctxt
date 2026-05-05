@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MirrorTemple
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=apic
+comment2.target=void\ mirrorTemple(Picture)
+comment3.params=source\ target
+comment3.target=void\ copytoCanvas(Picture,\ Picture)
+numComments=4
