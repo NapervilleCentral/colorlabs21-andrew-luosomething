@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Collage
+comment0.text=\r\n\ Collage\ of\ 6\ images\ derived\ from\ 1\ image\ edited.\ Final\ project\ for\ APCS.\r\n\ 5-5-2026\r\n\ Andrew\ Luo\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=source\ target\ x\ y
+comment2.target=void\ copytoCanvas(Picture,\ Picture,\ int,\ int)
+comment3.params=p\ width\ height
+comment3.target=void\ recur(Picture,\ int,\ int)
+comment4.params=p
+comment4.target=void\ mirrorHor(Picture)
+comment5.params=p
+comment5.target=void\ edgeDetect(Picture)
+numComments=6
