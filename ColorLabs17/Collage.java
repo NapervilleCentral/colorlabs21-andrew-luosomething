@@ -3,6 +3,16 @@ import java.util.*;
 import java.util.List;
 /**
  * Collage of 6 images derived from 1 image edited. Final project for APCS.
+ * 
+ * 1 - original image
+ * 2 - image recursively gets copied to top left 2/3rd section
+ * 3 - edge detection: more intense edges yellow, less intense edges green
+ * 4 - rotating colors. red to blue, blue to green, green to red
+ * 5 - mirroring bottom half of image to top half of image
+ * 6 - mirroring horizontally alternate stripes of the image
+ * 
+ * saved to finalcollage.png in images folder
+ * 
  * 5-5-2026
  * Andrew Luo
  */
@@ -24,12 +34,14 @@ public class Collage
         edgeDetect(p3);
         copytoCanvas(p3,c,0,1);
         rotateColor(p4);
-        copyToCanvas(p4,c,1,1);
+        copytoCanvas(p4,c,1,1);
         mirrorVert(p5);
         copytoCanvas(p5,c,0,2);
         stripeMirrorHor(p6);
         copytoCanvas(p6,c,1,2);
         c.explore();
+        
+        c.write("images\\finalcollage.png");
     }
     public static void copytoCanvas(Picture source, Picture target, int x,int y)
     {
@@ -89,7 +101,7 @@ public class Collage
                 a += Math.abs(pix.getRed()-downpix.getRed());
                 a += Math.abs(pix.getGreen()-downpix.getGreen());
                 a += Math.abs(pix.getBlue()-downpix.getBlue());
-                if (a>100) pix.setColor(Color.blue);
+                if (a>100) pix.setColor(Color.yellow);
                 else if (a>50) pix.setColor(Color.green);
                 else pix.setColor(Color.black);
             }
@@ -102,17 +114,17 @@ public class Collage
     }
     public static void rotateColor(Picture p)
     {
-        int temp;
+        int rn,gn,bn;
         Pixel pix;
         for (int y=0; y<p.getHeight(); y++)
         {
             for (int x=0; x<p.getWidth(); x++)
             {
                 pix = p.getPixel(x,y);
-                temp = pix.getRed();
-                pix.setRed(pix.getGreen());
-                pix.setGreen(pix.getBlue());
-                pix.setBlue(temp);
+                bn = pix.getRed();
+                rn = pix.getGreen();
+                gn = pix.getBlue();
+                pix.setColor(new Color(rn,gn,bn));
             }
         }
     }
