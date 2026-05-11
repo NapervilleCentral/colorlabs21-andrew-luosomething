@@ -23,8 +23,12 @@ public class Collage
         copytoCanvas(p2,c,1,0);
         edgeDetect(p3);
         copytoCanvas(p3,c,0,1);
-        mirrorHor(p5);
+        rotateColor(p4);
+        copyToCanvas(p4,c,1,1);
+        mirrorVert(p5);
         copytoCanvas(p5,c,0,2);
+        stripeMirrorHor(p6);
+        copytoCanvas(p6,c,1,2);
         c.explore();
     }
     public static void copytoCanvas(Picture source, Picture target, int x,int y)
@@ -57,7 +61,7 @@ public class Collage
         }
         if (newheight > 10) recur(p,newwidth,newheight);
     }
-    public static void mirrorHor(Picture p)
+    public static void mirrorVert(Picture p)
     {
         int mirror = p.getHeight()/2;
         Pixel tpix, bpix;
@@ -96,5 +100,40 @@ public class Collage
             pix.setColor(Color.black);
         }
     }
-    
+    public static void rotateColor(Picture p)
+    {
+        int temp;
+        Pixel pix;
+        for (int y=0; y<p.getHeight(); y++)
+        {
+            for (int x=0; x<p.getWidth(); x++)
+            {
+                pix = p.getPixel(x,y);
+                temp = pix.getRed();
+                pix.setRed(pix.getGreen());
+                pix.setGreen(pix.getBlue());
+                pix.setBlue(temp);
+            }
+        }
+    }
+    public static void stripeMirrorHor(Picture p)
+    {
+        int mirror = p.getWidth()/2;
+        Pixel lpix, rpix;
+        Color temp;
+        for (int y=0; y<p.getHeight(); y++)
+        {
+            if ((y/40)%2==0)
+            {
+                for (int x=0; x<mirror; x++)
+                {
+                    lpix = p.getPixel(x,y);
+                    rpix = p.getPixel(p.getWidth()-1-x,y);
+                    temp = rpix.getColor();
+                    rpix.setColor(lpix.getColor());
+                    lpix.setColor(temp);
+                }
+            }
+        }
+    }
 }
