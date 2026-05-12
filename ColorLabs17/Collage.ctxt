@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Collage
-comment0.text=\r\n\ Collage\ of\ 9\ images\ derived\ from\ 1\ image\ edited.\ Final\ project\ for\ APCS.\r\n\ \r\n\ 1\ -\ original\ image\r\n\ 2\ -\ image\ recursively\ gets\ copied\ to\ top\ left\ 2/3rd\ section\r\n\ 3\ -\ saturated\ image\ such\ that\ most\ intense\ component\ amplified,\ less\ intense\r\n\ components\ reduced\r\n\ 4\ -\ edge\ detection\:\ more\ intense\ edges\ yellow,\ less\ intense\ edges\ green\r\n\ 5\ -\ rotating\ colors.\ red\ to\ blue,\ blue\ to\ green,\ green\ to\ red\r\n\ 6\ -\ \r\n\ 7\ -\ mirroring\ bottom\ half\ of\ image\ to\ top\ half\ of\ image\r\n\ 8\ -\ mirroring\ horizontally\ alternate\ stripes\ of\ the\ image\r\n\ 9\ -\ \r\n\ \r\n\ saved\ to\ finalcollage.png\ in\ images\ folder\r\n\ \r\n\ 5-5-2026\r\n\ Andrew\ Luo\r\n
+comment0.text=\r\n\ Collage\ of\ 9\ images\ derived\ from\ 1\ image\ edited.\ Final\ project\ for\ APCS.\r\n\ \r\n\ 1\ -\ original\ image\r\n\ 2\ -\ image\ recursively\ gets\ copied\ to\ top\ left\ 2/3rd\ section\r\n\ 3\ -\ saturated\ image\ such\ that\ most\ intense\ component\ amplified,\ less\ intense\r\n\ components\ reduced\r\n\ 4\ -\ edge\ detection\:\ more\ intense\ edges\ yellow,\ less\ intense\ edges\ green\r\n\ 5\ -\ rotating\ colors.\ red\ to\ blue,\ blue\ to\ green,\ green\ to\ red\r\n\ 6\ -\ all\ pixels\ in\ image\ become\ 1\ of\ 8\ colors,\ depending\ on\ red,\ green,\ and\ blue\ values\r\n\ 7\ -\ mirroring\ bottom\ half\ of\ image\ to\ top\ half\ of\ image\r\n\ 8\ -\ mirroring\ horizontally\ alternate\ stripes\ of\ the\ image\r\n\ 9\ -\ image\ becomes\ white/light\ grey\ based\ on\ brightness\ of\ original\ pixels\r\n\ \r\n\ saved\ to\ finalcollage.png\ in\ images\ folder\r\n\ \r\n\ 5-5-2026\r\n\ Andrew\ Luo\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
+comment10.params=p
+comment10.target=void\ white(Picture)
 comment2.params=source\ target\ x\ y
 comment2.target=void\ copytoCanvas(Picture,\ Picture,\ int,\ int)
 comment3.params=p\ width\ height
@@ -19,4 +21,4 @@ comment8.params=p
 comment8.target=void\ partition(Picture)
 comment9.params=p
 comment9.target=void\ stripeMirrorHor(Picture)
-numComments=10
+numComments=11

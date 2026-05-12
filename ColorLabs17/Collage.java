@@ -10,10 +10,10 @@ import java.util.List;
  * components reduced
  * 4 - edge detection: more intense edges yellow, less intense edges green
  * 5 - rotating colors. red to blue, blue to green, green to red
- * 6 - 
+ * 6 - all pixels in image become 1 of 8 colors, depending on red, green, and blue values
  * 7 - mirroring bottom half of image to top half of image
  * 8 - mirroring horizontally alternate stripes of the image
- * 9 - 
+ * 9 - image becomes white/light grey based on brightness of original pixels
  * 
  * saved to finalcollage.png in images folder
  * 
@@ -44,10 +44,14 @@ public class Collage
         copytoCanvas(p4,c,0,1);
         rotateColor(p5);
         copytoCanvas(p5,c,1,1);
+        partition(p6);
+        copytoCanvas(p6,c,2,1);
         mirrorVert(p7);
         copytoCanvas(p7,c,0,2);
         stripeMirrorHor(p8);
         copytoCanvas(p8,c,1,2);
+        white(p9);
+        copytoCanvas(p9,c,2,2);
         c.explore();
         
         c.write("images\\finalcollage.png");
@@ -209,8 +213,29 @@ public class Collage
                 if (pix.getBlue() >= 128) a+=1;
                 switch(a)
                 {
-                    case '0':
+                    case 0:
                         pix.setColor(Color.black);
+                        break;
+                    case 1:
+                        pix.setColor(Color.blue);
+                        break;
+                    case 2:
+                        pix.setColor(Color.green);
+                        break;
+                    case 3:
+                        pix.setColor(Color.cyan);
+                        break;
+                    case 4:
+                        pix.setColor(Color.red);
+                        break;
+                    case 5:
+                        pix.setColor(Color.magenta);
+                        break;
+                    case 6:
+                        pix.setColor(Color.yellow);
+                        break;
+                    case 7:
+                        pix.setColor(Color.white);
                         break;
                 }
             }
@@ -233,6 +258,22 @@ public class Collage
                     rpix.setColor(lpix.getColor());
                     lpix.setColor(temp);
                 }
+            }
+        }
+    }
+    public static void white(Picture p)
+    {
+        Pixel pix;
+        int a;
+        for (int y=0; y<p.getHeight(); y++)
+        {
+            for (int x=0; x<p.getWidth(); x++)
+            {
+                pix = p.getPixel(x,y);
+                a = pix.getRed()+pix.getBlue()+pix.getGreen();
+                a/=12;
+                a=255-a;
+                pix.setColor(new Color(a,a,a));
             }
         }
     }
