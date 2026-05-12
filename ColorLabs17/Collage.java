@@ -2,14 +2,18 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 /**
- * Collage of 6 images derived from 1 image edited. Final project for APCS.
+ * Collage of 9 images derived from 1 image edited. Final project for APCS.
  * 
  * 1 - original image
  * 2 - image recursively gets copied to top left 2/3rd section
- * 3 - edge detection: more intense edges yellow, less intense edges green
- * 4 - rotating colors. red to blue, blue to green, green to red
- * 5 - mirroring bottom half of image to top half of image
- * 6 - mirroring horizontally alternate stripes of the image
+ * 3 - saturated image such that most intense component amplified, less intense
+ * components reduced
+ * 4 - edge detection: more intense edges yellow, less intense edges green
+ * 5 - rotating colors. red to blue, blue to green, green to red
+ * 6 - 
+ * 7 - mirroring bottom half of image to top half of image
+ * 8 - mirroring horizontally alternate stripes of the image
+ * 9 - 
  * 
  * saved to finalcollage.png in images folder
  * 
@@ -26,19 +30,24 @@ public class Collage
         Picture p4 = new Picture("images\\UScap.png");
         Picture p5 = new Picture("images\\UScap.png");
         Picture p6 = new Picture("images\\UScap.png");
+        Picture p7 = new Picture("images\\UScap.png");
+        Picture p8 = new Picture("images\\UScap.png");
+        Picture p9 = new Picture("images\\UScap.png");
         Picture c = new Picture("images\\Canvas.png");
         
         copytoCanvas(p1,c,0,0);
         recur(p2,p2.getWidth(),p2.getHeight());
         copytoCanvas(p2,c,1,0);
-        edgeDetect(p3);
-        copytoCanvas(p3,c,0,1);
-        rotateColor(p4);
-        copytoCanvas(p4,c,1,1);
-        mirrorVert(p5);
-        copytoCanvas(p5,c,0,2);
-        stripeMirrorHor(p6);
-        copytoCanvas(p6,c,1,2);
+        saturate(p3);
+        copytoCanvas(p3,c,2,0);
+        edgeDetect(p4);
+        copytoCanvas(p4,c,0,1);
+        rotateColor(p5);
+        copytoCanvas(p5,c,1,1);
+        mirrorVert(p7);
+        copytoCanvas(p7,c,0,2);
+        stripeMirrorHor(p8);
+        copytoCanvas(p8,c,1,2);
         c.explore();
         
         c.write("images\\finalcollage.png");
@@ -87,6 +96,63 @@ public class Collage
             }
         }
     }
+    public static void saturate(Picture p)
+    {
+        int a,b,c;
+        char col;
+        Pixel pix;
+        for (int y=0; y<p.getHeight(); y++)
+        {
+            for (int x=0; x<p.getWidth(); x++)
+            {
+                pix = p.getPixel(x,y);
+                a = pix.getRed();
+                col = 'r';
+                if (a < pix.getGreen())
+                {
+                    col = 'g';
+                    a = pix.getGreen();
+                }
+                if (a<pix.getBlue())
+                {
+                    col = 'b';
+                    a = pix.getBlue();
+                }
+                a+=120;
+                if (a>255) a = 255;
+                if (col == 'r')
+                {
+                    pix.setRed(a);
+                    b = pix.getGreen();
+                    c = pix.getBlue();
+                    b-=60; c-=60;
+                    if (b<0) b=0; if (c<0) c=0;
+                    pix.setGreen(b);
+                    pix.setBlue(c);
+                }
+                if (col == 'g')
+                {
+                    pix.setGreen(a);
+                    b = pix.getRed();
+                    c = pix.getBlue();
+                    b-=60; c-=60;
+                    if (b<0) b=0; if (c<0) c=0;
+                    pix.setRed(b);
+                    pix.setBlue(c);
+                }
+                if (col == 'b')
+                {
+                    pix.setBlue(a);
+                    b = pix.getGreen();
+                    c = pix.getRed();
+                    b-=60; c-=60;
+                    if (b<0) b=0; if (c<0) c=0;
+                    pix.setGreen(b);
+                    pix.setRed(c);
+                }
+            }
+        }
+    }
     public static void edgeDetect(Picture p)
     {
         int a;
@@ -125,6 +191,28 @@ public class Collage
                 rn = pix.getGreen();
                 gn = pix.getBlue();
                 pix.setColor(new Color(rn,gn,bn));
+            }
+        }
+    }
+    public static void partition(Picture p)
+    {
+        int a;
+        Pixel pix;
+        for (int y=0; y<p.getHeight(); y++)
+        {
+            for (int x=0; x<p.getWidth(); x++)
+            {
+                a = 0;
+                pix = p.getPixel(x,y);
+                if (pix.getRed() >= 128) a+=4;
+                if (pix.getGreen() >= 128) a+=2;
+                if (pix.getBlue() >= 128) a+=1;
+                switch(a)
+                {
+                    case '0':
+                        pix.setColor(Color.black);
+                        break;
+                }
             }
         }
     }
