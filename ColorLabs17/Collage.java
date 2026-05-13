@@ -248,7 +248,7 @@ public class Collage
         Color temp;
         for (int y=0; y<p.getHeight(); y++)
         {
-            if ((y/40)%2==0)
+            if ((y/10)%2==0)
             {
                 for (int x=0; x<mirror; x++)
                 {
